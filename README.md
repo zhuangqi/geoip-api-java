@@ -4,7 +4,7 @@
 ## Register MAXMIND ACCOUNT ##
 https://www.maxmind.com/en/account/login
 
-## GET License Keys
+## Get License Keys
 注册完账户后，在Account - Manage License Keys 创建许可证密钥
 
 
@@ -19,5 +19,5 @@ docker-compose up -d
 How to `curl`:
 
 ```bash
-curl -X POST http://localhost:8081/qryip?ip=85.25.43.84
+curl -X GET http://localhost:8081/qryip?ip=85.25.43.84
 ```
