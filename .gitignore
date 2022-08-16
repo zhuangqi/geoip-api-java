@@ -42,6 +42,7 @@ nbdist/
 !*/build/*.html
 !*/build/*.xml
 .DS_Store
+geoipupdate
 
 ######################################################################
 # VSCODE

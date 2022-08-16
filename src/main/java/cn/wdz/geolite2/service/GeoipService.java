@@ -2,6 +2,7 @@ package cn.wdz.geolite2.service;
 
 import java.io.File;
 import java.net.InetAddress;
+import java.text.SimpleDateFormat;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -102,4 +103,12 @@ public class GeoipService {
     }
 
 
+    public String getLastModified() {
+        String GEO_LITE2_CITY_DATA_PATH = GEO_LITE2_DATABASES_PATH + "/" + GEO_LITE2_CITY_DATA_FILENAME;
+        File database = new File(GEO_LITE2_CITY_DATA_PATH);
+        Long lastModified = database.lastModified();
+        SimpleDateFormat format =  new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String timeText=format.format(lastModified); 
+        return timeText;
+    }
 }

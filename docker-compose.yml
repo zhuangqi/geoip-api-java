@@ -1,0 +1,28 @@
+version: '3'
+services:
+  geoipapi:
+    container_name: geoipapi
+    image: zhuangqi/geoip-api-java:0.0.1
+    restart: always
+    ports:
+      - 8081:8081
+    networks:
+      - geoipnet
+    volumes:
+      - './geoipupdate:/usr/share/GeoIP'
+  geoipupdate:
+    container_name: geoipupdate
+    image: maxmindinc/geoipupdate
+    restart: unless-stopped
+    environment:
+      - GEOIPUPDATE_ACCOUNT_ID=XXXXXX
+      - GEOIPUPDATE_LICENSE_KEY=XXXXXXXXXXXXXXXX
+      - 'GEOIPUPDATE_EDITION_IDS=GeoLite2-City GeoLite2-Country'
+      - GEOIPUPDATE_FREQUENCY=24
+    networks:
+      - geoipnet
+    volumes:
+      - './geoipupdate:/usr/share/GeoIP'
+
+networks:
+  geoipnet:
